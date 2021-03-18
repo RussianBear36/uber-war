@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+
+  javamelody:
+    image: javamelody
+    ports:
+      - 1337:1337
+
+  postgres:
+    image: library/postgres:12.6
+    environment:
+      - POSTGRES_PASSWORD=1234
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=javamelodydb
+    ports:
+    - 5433:5432
+
+  tomcat:
+    image: tomcat
+    ports:
+      - 8099:8080
